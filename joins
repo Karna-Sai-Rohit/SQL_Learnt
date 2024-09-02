@@ -1,0 +1,55 @@
+--Creation of employee table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DepartmentID INT
+);
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID)
+VALUES
+(1, 'Rohit', 'Karna', 1),
+(2, 'Archith', 'Goud', 2),
+(3, 'Vinay', 'Kumar', 3),
+(4, 'Tharun', 'Sai', 1),
+(5, 'Manish', 'Kumar', 4);
+
+--Creation of departments table
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50)
+);
+
+INSERT INTO Departments (DepartmentID, DepartmentName)
+VALUES
+(1, 'HR'),
+(2, 'Finance'),
+(3, 'IT'),
+(4, 'Marketing'),
+(5, 'Sales');
+
+--usage of various joins learnt and applying it
+--inner join
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+INNER JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+
+--left join
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+LEFT JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+
+--right join
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+RIGHT JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+
+--full outer join
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+FULL OUTER JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+
+--cross join
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+CROSS JOIN Departments;
